@@ -1,0 +1,26 @@
+<div class="layout">
+            
+    <div class="photo_page_2">
+        <img class="img_page2" alt="" src="<%= images.standard_resolution.url %>"> 
+    </div>
+            
+    <div class="photo_info_page_2">        
+        <% if (caption && caption.text) { %>
+            <div class="description">
+                <div class="description_photo">
+                    <img class="img-responsive user_picture_com" src="<%= user.profile_picture %>">
+                </div>
+
+                <div class="description_text">
+                    <span class="user_name_text"><%= user.username %> </span></br>
+                    <span style="font-size: 12px; font-weight: 700"><%= created_time %></span></br>
+                    <%= caption.text %>
+                </div>
+            </div>
+        <% } %>
+            
+        <div class="all_comments"> 
+        </div>
+    </div>
+
+</div>

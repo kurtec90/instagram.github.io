@@ -1,0 +1,19 @@
+<div class="all_comments_block_page2">
+    <% _.each(comments, function (comment_text) {%>
+                        
+        <div class='one_comment_block'>
+            <div class="description_photo">
+                <img class="img-responsive user_picture_com" src="images/my_user_picture.jpg">
+            </div>
+            <div class="description_text">
+                <span class="user_name_text"> nester </span></br>
+                <%= comment_text %>
+            </div>   
+        </div>
+
+    <% }); %>   
+</div>
+
+<div class="div_input_comment"> 
+    <textarea class="textarea_comment" name="comment" placeholder="Write a comment" wrap="soft"></textarea>
+</div>

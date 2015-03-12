@@ -1,0 +1,25 @@
+<% if (comments.length>3) { %>
+
+    <div class='more_comments'> 
+        <span class="text_more_comments" onmouseout="this.style='text-decoration:none'" onmouseover="this.style='text-decoration:underline'"> <%= comments.length-3 %> more comments </span>
+    </div>
+
+<% } %>    
+
+<% _.each(comments, function (comment_text, index) {%>
+                        
+    <div class='one_comment_block' <% if ( (comments.length-index) > 3 ) {%> style="display: none" <%}; %>>
+        <div class="description_photo">
+            <img class="img-responsive user_picture_com" src="images/my_user_picture.jpg">
+        </div>
+        <div class="description_text">
+            <span class="user_name_text"> nester </span>
+            <%= comment_text %>
+        </div>   
+    </div>
+
+<% }); %>   
+
+<div class="div_input_comment">
+    <textarea class="textarea_comment" name="comment" placeholder="Write a comment" wrap="soft"></textarea>
+</div>

@@ -1,0 +1,28 @@
+<div class="user_info">
+    <div class="user_block">
+        <img class="img-responsive user_picture" src="<%= user.profile_picture %>">
+    </div>
+    <div class="user_block">
+        <div class="text-right"><span class="user_name_text"><%= user.username %></span></div>
+        <div class="text-right" style="font-size: 12px; font-weight: 700"><%= created_time %></div>
+    </div>
+</div>
+        
+<a href="#photos/<%= id %>">
+    <div class="photo_place" style="background: url('<%= images.standard_resolution.url %>')"></div>
+</a>
+        
+<div class="likes">
+    <img src="images/like_heart.jpg">
+    <strong><span style="color: #ACACAC; font-size: 14px;"><%= likes.count %></span></strong>
+</div>
+
+<% if (caption && caption.text) { %>
+    <div class="description">
+        <div class="description_photo"><img class="img-responsive user_picture_com" src="<%= user.profile_picture %>"></div>
+        <div class="description_text"><span class="user_name_text"><%= user.username %> </span><%= caption.text %></div>
+    </div>
+<% } %>
+
+<div class="comments">     
+</div>
