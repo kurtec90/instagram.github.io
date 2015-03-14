@@ -27,7 +27,11 @@ define([
 				var tag = $("#search_input").val().trim();
 				
 				if (!tag) {
-					return
+					return;
+				};
+				if ( tag.indexOf(' ') + 1 ) {
+					alert('Ваш запит має складатися тільки з одного слова!');
+					return;
 				};
 				
 				photo_collection.finalSearch(tag);

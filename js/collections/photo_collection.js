@@ -56,7 +56,7 @@ define([
 			parse: function (response) {
     	
     			var new_data = response.data;
-    	
+
     			_.each(new_data, function (model) {
     				model.created_time = getTime(model.created_time);
     			});

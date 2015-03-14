@@ -3,12 +3,10 @@ define([
     'backbone',
     'underscore',
     'collections/photo_collection',
+    'models/photo',
     'views/photos_view',
     'views/photos_all_info_view',
-    'collections/comments_collection',
-    'views/comments_view',
-    'scripts/script_scrollToButtom',
-    'scripts/script_checkLoadMore'], function($, Backbone, _, photo_collection, photos_view, photos_all_info_view, comments_collection, CommentsView, scrolling, checkLoadMore ){
+    'scripts/script_checkLoadMore'], function($, Backbone, _, photo_collection, photo, photos_view, photos_all_info_view, checkLoadMore ){
 
 
         var Routers = Backbone.Router.extend({
@@ -16,7 +14,8 @@ define([
 	       routes: {
 		      '' : 'homeRout',
 		      'photos' : 'showResult',
-		      'photos/:id' : 'photoRout'
+		      'photos/:id' : 'photoRout',
+              '*other' : 'default'
 	       },
 
 	       homeRout: function() {
@@ -39,19 +38,21 @@ define([
             	$("#wrapper_container").hide();
             	$("#content_one_photo").show();
 
-                var model = photo_collection.get(id);
-                var view = new photos_all_info_view({model: model});
-            	view.render();
+                if (photo_collection.length == 0) {
+                    
+                    var model = new photo;
+                    model.load_save_marker(id);
 
-                var comments = comments_collection.get(id) || comments_collection.add({'id': id}),
-                    commentsView = new CommentsView({
-                        model: comments, 
-                        el: view.$('.all_comments') 
-                    });
-                commentsView.template = _.template($('#all_comments-template').html());
-                commentsView.render();
-                
-                scrolling();
+                } else {
+                    var model = photo_collection.get(id);
+                    var view = new photos_all_info_view({model: model});
+                    view.showPage2(id);
+                };             
+            },
+
+            default: function(other) {
+                alert('Ви намагаєтесь перейти за не вірною адресою! Вас буде перенаправлено на головну сторінку!');
+                this.homeRout();
             }
 
         });

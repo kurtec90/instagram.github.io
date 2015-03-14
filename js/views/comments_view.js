@@ -4,11 +4,12 @@ define([
 	'underscore',
 	'storage',
 	'collections/comments_collection',
-    'scripts/script_scrollToButtom'], function($, Backbone, _, storage, comments_collection, scrolling){
+    'scripts/script_scrollToButtom',
+    'text!templates/part_comments_template.html'], function($, Backbone, _, storage, comments_collection, scrolling, part_comments_template ){
 
 		var CommentsView = Backbone.View.extend({
 
-			template: _.template($('#comments-template').html()),
+			template: _.template( part_comments_template ),
 
 			events: {
 				'keypress .textarea_comment': 'ctrlEnter',
